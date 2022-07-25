@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class nubesMovimiento : MonoBehaviour
 {
-    public float speed = 5f;
     private Rigidbody2D rb;
-    public float deactivateTimer = 4f;
+
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float deactivateTimer = 10f;
 
     void Start()
     {
