@@ -7,27 +7,35 @@ public class playerMovimiento : MonoBehaviour
 {
     public float speed;
     public float jump;
+    public float movimiento;
     private int Health = 5;
     public string sceneName;
     Rigidbody2D rb;
     public Animator animator;
+    bool isHurting, isDead;
     private bool mirandoDerecha = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
         Movement();
+        SetAnimationState();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isHurting)
+            rb.velocity = new Vector2(movimiento, rb.velocity.y);
     }
 
     private void Movement()
     {
-        var movimiento = Input.GetAxisRaw("Horizontal");
+        movimiento = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(movimiento, 0, 0) * Time.deltaTime * speed;
-
-        //animator.SetFloat("speed", Mathf.Abs(movimiento));
 
         if (movimiento > 0 && !mirandoDerecha)
         {
@@ -38,10 +46,13 @@ public class playerMovimiento : MonoBehaviour
             Girar();
         }
 
-        if (Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.001f)
+        if (Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.001f && !isDead && rb.velocity.y == 0)
         {
             Jump();
         }
+
+        if (!isDead)
+            movimiento = Input.GetAxisRaw("Horizontal") * speed;
     }
     private void Girar()
     {
@@ -70,6 +81,34 @@ public class playerMovimiento : MonoBehaviour
                 Destroy(gameObject);
                 SceneManager.LoadScene(sceneName);
             }
+        }
+    }
+
+    void SetAnimationState()
+    {
+        if (movimiento == 0)
+        {
+            animator.SetBool("isRunning", false);
+        }
+
+        if (rb.velocity.y == 0)
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", false);
+        }
+
+        if (Mathf.Abs(movimiento) == 5 && rb.velocity.y == 0)
+            animator.SetBool("isRunning", true);
+        else
+            animator.SetBool("isRunning", false);
+
+        if (rb.velocity.y > 0)
+            animator.SetBool("isJumping", true);
+
+        if (rb.velocity.y < 0)
+        {
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", true);
         }
     }
 }
