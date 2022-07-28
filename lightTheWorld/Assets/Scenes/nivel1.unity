@@ -734,7 +734,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1492449599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,8 +749,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jump: 7
+  movimiento: 0
   sceneName: 
-  animator: {fileID: 0}
+  animator: {fileID: 1492449600}
 --- !u!95 &1492449600
 Animator:
   serializedVersion: 3
