@@ -18,6 +18,9 @@ public class playerMovimiento : MonoBehaviour
     private int item;
     public Text itemText;
     public GameObject textObject;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
 
     void Start()
     {
@@ -29,7 +32,6 @@ public class playerMovimiento : MonoBehaviour
     {
         Movement();
         SetAnimationState();
-        Atacar();
     }
 
     private void FixedUpdate()
@@ -57,6 +59,11 @@ public class playerMovimiento : MonoBehaviour
             Jump();
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Atacar();
+        }
+
         if (!isDead)
             movimiento = Input.GetAxisRaw("Horizontal") * speed;
     }
@@ -78,9 +85,13 @@ public class playerMovimiento : MonoBehaviour
 
     private void Atacar()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        animator.SetBool("isAtacando", true);
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach(Collider2D enemy in hitEnemies)
         {
-            animator.SetBool("isAtacando", true);
+            enemy.GetComponent<Enemies>().TakeDamage(1);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
