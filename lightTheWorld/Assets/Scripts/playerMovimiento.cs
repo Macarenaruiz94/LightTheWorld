@@ -74,14 +74,30 @@ public class playerMovimiento : MonoBehaviour
             rb.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }
     }
+
+    private void Atacar()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            animator.SetBool("isAtacando", true);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemigo")
         {
             Health -= 1;
+            
+            if (collision.gameObject.tag == "Enemigo" && Health > 0)
+            {
+                animator.SetTrigger("isTakingDamage");
+                StartCoroutine("Hurt");
+            }
 
             if (Health == 0)
             {
+                isDead = true;
+                animator.SetTrigger("isDying");
                 Destroy(gameObject);
                 SceneManager.LoadScene(sceneName);
             }
@@ -98,6 +114,21 @@ public class playerMovimiento : MonoBehaviour
 
             if(item == 10) { textObject.SetActive(true); }
         }
+    }
+
+    IEnumerator Hurt()
+    {
+        isHurting = true;
+        rb.velocity = Vector2.zero;
+
+        if (mirandoDerecha)
+            rb.AddForce(new Vector2(-200f, 200f));
+        else
+            rb.AddForce(new Vector2(200f, 200f));
+
+        yield return new WaitForSeconds(0.5f);
+
+        isHurting = false;
     }
 
     void SetAnimationState()
