@@ -17,11 +17,13 @@ public class playerMovimiento : MonoBehaviour
     private bool mirandoDerecha = true;
     private int item;
     public Text itemText;
+    public GameObject textObject;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        textObject.SetActive(false);
     }
     void Update()
     {
@@ -72,7 +74,6 @@ public class playerMovimiento : MonoBehaviour
             rb.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemigo")
@@ -94,6 +95,8 @@ public class playerMovimiento : MonoBehaviour
             Destroy(collision.gameObject);
             item++;
             itemText.text = "Fire: " + item;
+
+            if(item == 10) { textObject.SetActive(true); }
         }
     }
 
