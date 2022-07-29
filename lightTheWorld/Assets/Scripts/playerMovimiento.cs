@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playerMovimiento : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class playerMovimiento : MonoBehaviour
     public Animator animator;
     bool isHurting, isDead;
     private bool mirandoDerecha = true;
+    private int item;
+    public Text itemText;
 
     void Start()
     {
@@ -81,6 +84,16 @@ public class playerMovimiento : MonoBehaviour
                 Destroy(gameObject);
                 SceneManager.LoadScene(sceneName);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            Destroy(collision.gameObject);
+            item++;
+            itemText.text = "Fire: " + item;
         }
     }
 
