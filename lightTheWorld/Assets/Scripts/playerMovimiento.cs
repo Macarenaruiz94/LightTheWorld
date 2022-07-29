@@ -21,12 +21,14 @@ public class playerMovimiento : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+    public GameObject fuegos;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         textObject.SetActive(false);
+        fuegos.SetActive(false);
     }
     void Update()
     {
