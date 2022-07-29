@@ -29,6 +29,7 @@ public class playerMovimiento : MonoBehaviour
     {
         Movement();
         SetAnimationState();
+        Atacar();
     }
 
     private void FixedUpdate()
