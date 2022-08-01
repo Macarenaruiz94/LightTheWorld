@@ -5022,8 +5022,8 @@ GameObject:
   - component: {fileID: 1402717698}
   - component: {fileID: 1402717697}
   m_Layer: 3
-  m_Name: idle 1_2
-  m_TagString: Enemy
+  m_Name: enemigo
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
