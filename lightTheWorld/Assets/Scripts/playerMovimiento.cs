@@ -9,7 +9,8 @@ public class playerMovimiento : MonoBehaviour
     public float speed;
     public float jump;
     public float movimiento;
-    private int Health = 5;
+    public int maxHealth = 5;
+    private int currentHealth;
     public string sceneName;
     Rigidbody2D rb;
     public Animator animator;
@@ -25,6 +26,7 @@ public class playerMovimiento : MonoBehaviour
 
     void Start()
     {
+        currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         textObject.SetActive(false);
@@ -96,25 +98,20 @@ public class playerMovimiento : MonoBehaviour
             enemy.GetComponent<Enemies>().TakeDamage(1);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemigo")
-        {
-            Health -= 1;
-            
-            if (collision.gameObject.tag == "Enemigo" && Health > 0)
-            {
-                animator.SetTrigger("isTakingDamage");
-                StartCoroutine("Hurt");
-            }
 
-            if (Health == 0)
-            {
-                isDead = true;
-                animator.SetTrigger("isDying");
-                Destroy(gameObject);
-                SceneManager.LoadScene(sceneName);
-            }
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        animator.SetTrigger("isTakingDamage");
+        StartCoroutine("Hurt");
+
+        if (currentHealth == 0)
+        {
+            isDead = true;
+            animator.SetTrigger("isDying");
+            Destroy(gameObject);
+            SceneManager.LoadScene(sceneName);
         }
     }
 
