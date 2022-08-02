@@ -15,6 +15,8 @@ public class Enemies : MonoBehaviour
     public LayerMask playerLayer;
     public Transform target;
     private bool mirandoDerecha = true;
+    private float timeBtwShots;
+    public float startTimeBtwShots;
     void Start()
     {
         currentSalud = maxSalud;
@@ -27,7 +29,15 @@ public class Enemies : MonoBehaviour
             animator.SetBool("isMoving", true);
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
-        else { Atacar(); }
+        else if (timeBtwShots <= 0)
+        {
+            Atacar();
+            timeBtwShots = startTimeBtwShots;
+        }
+        else
+        {
+            timeBtwShots -= Time.deltaTime;
+        }
 
         if (speed > 0 && !mirandoDerecha)
         {

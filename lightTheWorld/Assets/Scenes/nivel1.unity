@@ -4993,8 +4993,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321443747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.2261, y: -7.766, z: 0}
-  m_LocalScale: {x: 171.961, y: 11.155866, z: 1}
+  m_LocalPosition: {x: 19.2261, y: -7.7394, z: 0}
+  m_LocalScale: {x: 171.961, y: 11.255154, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -5234,6 +5234,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   target: {fileID: 1492449596}
+  startTimeBtwShots: 2
 --- !u!4 &1409168698 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 424889912334446835, guid: 28314cc8e790ffe4da3e931ed11246f0, type: 3}
