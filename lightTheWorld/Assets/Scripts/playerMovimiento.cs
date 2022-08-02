@@ -11,7 +11,6 @@ public class playerMovimiento : MonoBehaviour
     public float movimiento;
     public int maxHealth = 5;
     private int currentHealth;
-    public string sceneName;
     Rigidbody2D rb;
     public Animator animator;
     bool isHurting, isDead;
@@ -19,6 +18,8 @@ public class playerMovimiento : MonoBehaviour
     private int item;
     public Text itemText;
     public GameObject textObject;
+    public GameObject textGanar;
+    public GameObject textPerder;
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
@@ -30,6 +31,8 @@ public class playerMovimiento : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         textObject.SetActive(false);
+        textGanar.SetActive(false);
+        textPerder.SetActive(false);
         fuegos.SetActive(false);
     }
     void Update()
@@ -110,8 +113,7 @@ public class playerMovimiento : MonoBehaviour
         {
             isDead = true;
             animator.SetTrigger("isDying");
-            Destroy(gameObject);
-            SceneManager.LoadScene(sceneName);
+            textPerder.SetActive(true);
         }
     }
 

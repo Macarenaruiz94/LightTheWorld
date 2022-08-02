@@ -6,9 +6,11 @@ public class lightTree : MonoBehaviour
 {
     public GameObject fuegos;
     public GameObject text;
+    public GameObject textGanar;
     public void Start()
     {
         fuegos.SetActive(false);
+        textGanar.SetActive(false);
     }
 
     public void LightTree()
@@ -21,5 +23,6 @@ public class lightTree : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Destroy(text);
+        textGanar.SetActive(true);
     }
 }
