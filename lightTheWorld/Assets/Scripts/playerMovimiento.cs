@@ -9,7 +9,7 @@ public class playerMovimiento : MonoBehaviour
     public float speed;
     public float jump;
     public float movimiento;
-    public int maxHealth = 5;
+    public int maxHealth = 10;
     private int currentHealth;
     Rigidbody2D rb;
     public Animator animator;
