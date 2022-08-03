@@ -53,11 +53,11 @@ public class playerMovimiento : MonoBehaviour
         movimiento = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(movimiento, 0, 0) * Time.deltaTime * speed;
 
-        if (movimiento > 0 && !mirandoDerecha)
+        if (movimiento > 0 && !mirandoDerecha && !isDead)
         {
             Girar();
         }
-        else if (movimiento < 0 && mirandoDerecha)
+        else if (movimiento < 0 && mirandoDerecha && !isDead)
         {
             Girar();
         }
@@ -67,7 +67,7 @@ public class playerMovimiento : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !isDead)
         {
             Atacar();
         }
@@ -85,7 +85,7 @@ public class playerMovimiento : MonoBehaviour
 
     private void Jump()
     {
-        if (Mathf.Abs(rb.velocity.y) < 0.001f)
+        if (Mathf.Abs(rb.velocity.y) < 0.001f && !isDead)
         {
             rb.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
         }
@@ -122,6 +122,7 @@ public class playerMovimiento : MonoBehaviour
             isDead = true;
             animator.SetTrigger("isDying");
             textPerder.SetActive(true);
+            Destroy(this);
         }
     }
 
