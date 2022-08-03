@@ -17,35 +17,46 @@ public class Enemies : MonoBehaviour
     private bool mirandoDerecha = true;
     private float timeBtwShots;
     public float startTimeBtwShots;
+    [SerializeField] float agroRange;
+    Rigidbody2D rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         currentSalud = maxSalud;
     }
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
+        float distToPlayer = Vector2.Distance(transform.position, target.position);
+        if (distToPlayer < agroRange)
         {
-            animator.SetBool("isMoving", true);
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        }
-        else if (timeBtwShots <= 0)
-        {
-            Atacar();
-            timeBtwShots = startTimeBtwShots;
+            if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
+            {
+                animator.SetBool("isMoving", true);
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            }
+            else if (timeBtwShots <= 0)
+            {
+                Atacar();
+                timeBtwShots = startTimeBtwShots;
+            }
+            else
+            {
+                timeBtwShots -= Time.deltaTime;
+            }
+
+            if (speed > 0 && !mirandoDerecha)
+            {
+                Girar();
+            }
+            else if (speed < 0 && mirandoDerecha)
+            {
+                Girar();
+            }
         }
         else
         {
-            timeBtwShots -= Time.deltaTime;
-        }
-
-        if (speed > 0 && !mirandoDerecha)
-        {
-            Girar();
-        }
-        else if (speed < 0 && mirandoDerecha)
-        {
-            Girar();
+            rb.velocity = new Vector2(0, 0);
         }
     }
 
