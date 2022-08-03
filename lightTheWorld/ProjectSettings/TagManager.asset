@@ -7,7 +7,6 @@ TagManager:
   - Item
   - Enemigo
   - obstaculo
-  - attackPoint
   layers:
   - Default
   - TransparentFX
