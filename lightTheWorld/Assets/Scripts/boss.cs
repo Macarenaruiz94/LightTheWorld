@@ -19,6 +19,7 @@ public class boss : MonoBehaviour
     public float startTimeBtwShots;
     [SerializeField] float agroRange;
     Rigidbody2D rb;
+    public GameObject textGanar;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -72,6 +73,7 @@ public class boss : MonoBehaviour
 
         if (currentSalud <= 0)
         {
+            textGanar.SetActive(true);
             Die();
         }
     }
@@ -89,13 +91,6 @@ public class boss : MonoBehaviour
     {
         isDead = true;
         animator.SetTrigger("isDying");
-        StartCoroutine("Destroy");
-    }
-
-    IEnumerator Destroy()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
     }
 
     private void Atacar()
