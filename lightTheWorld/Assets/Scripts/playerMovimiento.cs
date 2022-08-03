@@ -23,6 +23,7 @@ public class playerMovimiento : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+    public LayerMask obstaculosLayer;
     public GameObject fuegos;
 
     void Start()
@@ -99,6 +100,13 @@ public class playerMovimiento : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemies>().TakeDamage(1);
+        }
+
+        Collider2D[] hitObstaculos = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, obstaculosLayer);
+
+        foreach (Collider2D obstaculo in hitObstaculos)
+        {
+            obstaculo.GetComponent<obstaculo>().TakeDamage(1);
         }
     }
 
