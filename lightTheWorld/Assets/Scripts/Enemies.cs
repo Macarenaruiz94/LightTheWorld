@@ -28,6 +28,7 @@ public class Enemies : MonoBehaviour
     private void Update()
     {
         float distToPlayer = Vector2.Distance(transform.position, target.position);
+
         if (distToPlayer < agroRange)
         {
             if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
@@ -45,18 +46,20 @@ public class Enemies : MonoBehaviour
                 timeBtwShots -= Time.deltaTime;
             }
 
-            if (speed > 0 && !mirandoDerecha)
-            {
-                Girar();
-            }
-            else if (speed < 0 && mirandoDerecha)
-            {
-                Girar();
-            }
+            LookPlayer();
         }
         else
         {
             rb.velocity = new Vector2(0, 0);
+        }
+    }
+
+    public void LookPlayer()
+    {
+        if((target.position.x > transform.position.x && !mirandoDerecha) || (target.position.x < transform.position.x && mirandoDerecha))
+        {
+            mirandoDerecha = !mirandoDerecha;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
         }
     }
 
@@ -105,13 +108,5 @@ public class Enemies : MonoBehaviour
         {
             player.GetComponent<playerMovimiento>().TakeDamage(1);
         }
-    }
-
-    private void Girar()
-    {
-        mirandoDerecha = !mirandoDerecha;
-        Vector3 escala = transform.localScale;
-        escala.x *= -1;
-        transform.localScale = escala;
     }
 }
