@@ -1158,12 +1158,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 253041423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b52f327db4eed429835e82ad966602, type: 3}
+  m_Script: {fileID: 11500000, guid: d3f5ddccf65c8d8428af18416bb40020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fuegos: {fileID: 78483793}
   text: {fileID: 1598179673}
-  textSeguir: {fileID: 1582515208}
+  textGanar: {fileID: 1582515208}
 --- !u!114 &253041426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,7 +1209,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 253041425}
-        m_TargetAssemblyTypeName: lastBoton, Assembly-CSharp
+        m_TargetAssemblyTypeName: lightTree, Assembly-CSharp
         m_MethodName: LightTree
         m_Mode: 1
         m_Arguments:
@@ -7640,7 +7640,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1418347438}
   - component: {fileID: 1418347437}
-  - component: {fileID: 1418347436}
   m_Layer: 0
   m_Name: arbol
   m_TagString: Untagged
@@ -7648,22 +7647,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!70 &1418347436
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418347435}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.7971115, y: -2.258486}
-  m_Size: {x: 1.3673248, y: 2.983028}
-  m_Direction: 0
 --- !u!212 &1418347437
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7957,7 +7940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.6751, y: 54.3751}
+  m_AnchoredPosition: {x: 8.6751, y: 45.7}
   m_SizeDelta: {x: 370.5096, y: 160.4808}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582515210
@@ -8825,7 +8808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798299716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15980911, y: -3.15, z: -10}
+  m_LocalPosition: {x: -0.16151524, y: -3.15, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1728608101}
@@ -10517,7 +10500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121668616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15980911, y: -3.15, z: -10}
+  m_LocalPosition: {x: -0.16151524, y: -3.15, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 718735524}
