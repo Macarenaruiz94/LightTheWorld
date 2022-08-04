@@ -73,7 +73,6 @@ public class boss : MonoBehaviour
 
         if (currentSalud <= 0)
         {
-            textGanar.SetActive(true);
             Die();
         }
     }
