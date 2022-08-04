@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Victoria.unity
     guid: 88cf4929745ed5d41955c60d9358013a
+  - enabled: 1
+    path: Assets/Scenes/historia.unity
+    guid: e881bc5f08d59f447929ae92e8979e64
   m_configObjects: {}
