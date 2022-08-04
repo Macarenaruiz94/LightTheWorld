@@ -3874,8 +3874,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: After all this time, we can now finally see the light of the world once
-    again. Caos has been defeated. The kingdom of Baghta is safe.
+  m_Text: After all this time, we can finally see the light of the world once again.
+    Caos has been defeated. The kingdom of Baghta is safe.
 --- !u!222 &624019528
 CanvasRenderer:
   m_ObjectHideFlags: 0
